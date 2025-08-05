@@ -14,7 +14,7 @@ const Ride = ({ ride }) => {
           <div>
             <p>{ride.description}</p>
             <div className="btn-container">
-              <Link className="ride-btn-book" to={`/ticket/booking/${ride.id}`}>
+              <Link className="ride-btn-book" to={`/ticket/booking/${ride._id}`}>
                 Book a ticket
               </Link>
             </div>

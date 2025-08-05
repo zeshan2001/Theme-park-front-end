@@ -1,12 +1,11 @@
 import './App.css'
 import { Routes, Route, useNavigate } from 'react-router-dom'
-// import Home from './pages/Home'
 import Header from './components/Header'
 import Home from './pages/Home'
 import Rides from './pages/Rides'
 import BookingForm from './pages/BookingForm'
 import Ticket from './pages/Ticket'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import axios from 'axios'
 
 function App() {
@@ -19,8 +18,13 @@ function App() {
 
   const [formState, setFormState] = useState(initialState)
   const [ticketId, setTicketId] = useState(null)
+  const [rideId, setRideId] = useState(null)
 
+  const getRideId = (id) => {
+    setRideId(id)
+  }
   const handleChange = (event) => {
+    formState.ride = rideId
     setFormState({
       ...formState,
       [event.target.name]: event.target.value
@@ -36,9 +40,16 @@ function App() {
     )
 
     setTicketId(response.data._id)
-    
-    ticketId && navigate(`/ticket/${ticketId}`)
+    setFormState(initialState)
+    setRideId(null)
   }
+
+  useEffect(() => {
+    if (ticketId) {
+      navigate(`/ticket/${ticketId}`)
+      setTicketId(null)
+    }
+  }, [ticketId])
 
   return (
     <>
@@ -54,7 +65,7 @@ function App() {
                 handleSubmit={handleSubmit}
                 handleChange={handleChange}
                 formState={formState}
-                // ticketId ={ticketId}
+                getRideId={getRideId}
               />
             }
           />

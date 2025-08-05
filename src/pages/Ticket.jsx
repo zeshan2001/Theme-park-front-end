@@ -1,19 +1,14 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 
 const Ticket = () => {
-  let navigate = useNavigate()
   const { ticketId } = useParams()
-  // const [ticket_id, setTicket_id] = useState('')
   const [ticketInfo, setTicketInfo] = useState(null)
-  const [rideInfo, setRideInfo] = useState(null)
-  let ticketInfoo
 
   const deleteTicket = async () => {
     await axios.delete(`http://localhost:3001/ticket/${ticketId}`)
-  
-    navigate(`/ticket/${null}`)
+    setTicketInfo(null)
   }
 
   useEffect(() => {
@@ -21,40 +16,35 @@ const Ticket = () => {
       const response = await axios.get(
         `http://localhost:3001/ticket/${ticketId}`
       )
-
-      ticketInfoo = response.data
+      console.log(response.data)
       setTicketInfo(response.data)
     }
 
-    ticketId ? getTicket() : console.log('Noooooooooooo')
-
-    setTimeout(async () => {
-      const resRide = await axios.get(
-        `http://localhost:3001/rides/${ticketInfoo.ride}`
-      )
-      console.log(resRide.data)
-      setRideInfo(resRide.data)
-    }, 1000)
+    ticketId !== 'null' && getTicket()
   }, [ticketId])
 
   return (
     <>
       <h1>ticket</h1>
       <div>
-        {ticketInfo && rideInfo ? (
+        {ticketInfo ? (
           <>
             <div className="ticket-conatiner">
               <div>
-                <img src={rideInfo.image} alt="" width={200} height={200} />
+                <img
+                  src={ticketInfo.ride.image}
+                  alt=""
+                  width={200}
+                  height={200}
+                />
               </div>
-              <h1>{rideInfo.name}</h1>
-              <p>price: ${rideInfo.price}</p>
-              <p>{rideInfo.description}</p>
+              <h1>{ticketInfo.ride.name}</h1>
+              <p>price: ${ticketInfo.ride.price}</p>
+              <p>{ticketInfo.ride.description}</p>
               <p>{ticketInfo.name}</p>
               <p>{ticketInfo.purchase_date.split('T')[0]}</p>
-              <a onClick={deleteTicket} href={`/ticket/${null}`}>
-              <button>Delete</button>
-              </a>
+
+              <button onClick={deleteTicket}>Delete</button>
             </div>
           </>
         ) : (

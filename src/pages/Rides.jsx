@@ -1,23 +1,19 @@
 import Ride from '../components/Ride'
 import { useState, useEffect } from 'react'
-import { rideList } from '../data/rides'
 import axios from 'axios'
 
 
 const Rides = () => {
   const [rides, setRides] = useState([])
-  useEffect(() => {
 
+  useEffect(() => {
     const getRides = async() => {
       let response = await axios.get('http://localhost:3001/rides')
       setRides(response.data)
     }
 
     getRides()
-    // setRides(rideList)
   }, [])
-
-  // rides.length > 0 ? console.log(rides) : console.log('No data....')
 
   return (
     <>

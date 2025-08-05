@@ -7,13 +7,14 @@ import Rides from './pages/Rides'
 import BookingForm from './pages/BookingForm'
 import Ticket from './pages/Ticket'
 import { useState } from 'react'
+import axios from 'axios'
 
 function App() {
   const navigate = useNavigate()
   const initialState = {
     name: '',
     purchase_date: '',
-    ride: null
+    ride: ''
   }
 
   const [formState, setFormState] = useState(initialState)
@@ -22,29 +23,21 @@ function App() {
   const handleChange = (event) => {
     setFormState({
       ...formState,
-      [event.target.name]: [event.target.value]
+      [event.target.name]: event.target.value
     })
   }
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault()
-    // do something with the data in the component state
 
-    // *****************************************************************
-    // in the backend in post issue api, after they create the issue, they store it in variable called newIssue
-    // res.status(200).send(newIssue)
-    // *****************************************************************
+    let response = await axios.post(
+      'http://localhost:3001/ticket/new',
+      formState
+    )
 
-    // const response = await axios.post('http://localhost:3001/issues', formState)
-    // console.log(response.data)
-    // console.log(response.data._id) // ticketId
-    // setTicketId(response.data._id)
-    setTicketId(2) // for now we assume 2
-    console.log(formState)
-    // clear the form
-    setFormState(initialState)
-    // remember as michael did in class, when we call axios.post and using something we get the whole object with his id then we pass the ticketId as Params.
-    navigate(`ticket/${2}`)
+    setTicketId(response.data._id)
+    
+    ticketId && navigate(`/ticket/${ticketId}`)
   }
 
   return (
@@ -61,6 +54,7 @@ function App() {
                 handleSubmit={handleSubmit}
                 handleChange={handleChange}
                 formState={formState}
+                // ticketId ={ticketId}
               />
             }
           />

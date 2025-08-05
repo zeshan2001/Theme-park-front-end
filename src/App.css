@@ -111,3 +111,17 @@ header nav a {
 .booking-form button:hover {
   background-color: #0056b3;
 }
+
+
+
+
+
+
+
+
+
+/* Ticket.jsx CSS */
+.ticket-conatiner {
+  border: 1px solid;
+  width: 500px;
+}

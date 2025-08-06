@@ -173,7 +173,8 @@ header nav a {
 }
 
 .ticket-detail .name,
-.date {
+.date,
+.ticketId {
   display: flex;
   justify-content: space-between;
 }

@@ -76,6 +76,10 @@ const Ticket = () => {
                 <p className="price">
                   <b>${ticketInfo.ride.price}</b>
                 </p>
+                <p className="ticketId">
+                  <b>Ticket ID: </b>
+                  <span>{ticketInfo._id}</span>
+                </p>
               </div>
               <div className="delete-btn">
                 <button onClick={deleteTicket}>Delete</button>

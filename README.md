@@ -1,12 +1,44 @@
-# React + Vite
+# Booking Ticket-Park
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Date 8/04/2025
 
-Currently, two official plugins are available:
+# By: Mahmood Ali, Zeshan Ahmed , Abdulla Zaid
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# A brief Description of Project
 
-## Expanding the ESLint configuration
+A front-end Design for website users can view all ride games and book a ticket for a ride
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+# Wireframes Design
+
+Home Page
+![Home Page](images/Slide1.JPG)
+Lisi All rides
+![Lisi All rides](images/Slide2.JPG)
+select one ride
+![select one ride](images/Slide3.JPG)
+book one ride
+![book one ride](images/Slide4.JPG)
+
+# ERD Design
+
+![ERD Design](images/ERD.png)
+
+# Component Hierarchy Diagrams
+
+![Component Hierarchy Diagrams](images/Hierarchy%20Diagrams.jpg)
+
+# Screenshot Design
+
+# Lists/Tech used
+
+- HTML
+- CSS
+- JavaScript
+- React with vite
+- Surge
+- Axios
+
+# Future work
+
+- Change the style of the page.
+- Add more rides.

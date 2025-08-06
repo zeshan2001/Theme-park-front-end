@@ -13,7 +13,7 @@ const BookingForm = ({ handleSubmit, handleChange, formState, getRideId }) => {
       <div className="booking-form">
         <h2>Book Your Ticket</h2>
         <form>
-          <label htmlFor="name">Name:</label>
+          <label htmlFor="name">Enter your Name</label>
           <input
             type="text"
             id="name"
@@ -23,7 +23,7 @@ const BookingForm = ({ handleSubmit, handleChange, formState, getRideId }) => {
             required
           ></input>
 
-          <label htmlFor="purchase_date">Date</label>
+          <label htmlFor="purchase_date">Add a Date</label>
           <input
             type="date"
             id="purchase_date"

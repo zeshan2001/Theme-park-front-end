@@ -1,6 +1,7 @@
 import Ride from '../components/Ride'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import { BASE_URL } from '../globals'
 
 
 const Rides = () => {
@@ -8,7 +9,7 @@ const Rides = () => {
 
   useEffect(() => {
     const getRides = async() => {
-      let response = await axios.get('http://localhost:3001/rides')
+      let response = await axios.get(`${BASE_URL}/rides`)
       setRides(response.data)
     }
 

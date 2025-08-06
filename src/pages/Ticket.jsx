@@ -2,6 +2,7 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import SearchTicket from '../components/SearchTicket'
+import { BASE_URL } from '../globals'
 
 const Ticket = () => {
   const { ticketId } = useParams()
@@ -10,8 +11,8 @@ const Ticket = () => {
 
   const deleteTicket = async () => {
     ticketId !== 'null'
-      ? await axios.delete(`http://localhost:3001/ticket/${ticketId}`)
-      : await axios.delete(`http://localhost:3001/ticket/${searchQuery}`)
+      ? await axios.delete(`${BASE_URL}/ticket/${ticketId}`)
+      : await axios.delete(`${BASE_URL}/ticket/${searchQuery}`)
     setSearchQuery('')
     setTicketInfo(null)
   }
@@ -19,7 +20,7 @@ const Ticket = () => {
   useEffect(() => {
     const getTicket = async () => {
       const response = await axios.get(
-        `http://localhost:3001/ticket/${ticketId}`
+        `${BASE_URL}/ticket/${ticketId}`
       )
       console.log(response.data)
       setTicketInfo(response.data)
@@ -31,7 +32,7 @@ const Ticket = () => {
   const getSearchResult = async (e) => {
     e.preventDefault()
     let response = await axios.get(
-      `http://localhost:3001/ticket/${searchQuery}`
+      `${BASE_URL}/ticket/${searchQuery}`
     )
 
     setTicketInfo(response.data)

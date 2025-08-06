@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && npx surge --project ./dist --domain 'https://birch-theme-park.surge.sh/'",
     "lint": "eslint .",
     "preview": "vite preview"
   },

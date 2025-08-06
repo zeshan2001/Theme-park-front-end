@@ -7,6 +7,7 @@ import BookingForm from './pages/BookingForm'
 import Ticket from './pages/Ticket'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
+import { BASE_URL } from './globals'
 
 function App() {
   const navigate = useNavigate()
@@ -35,7 +36,7 @@ function App() {
     event.preventDefault()
 
     let response = await axios.post(
-      'http://localhost:3001/ticket/new',
+      `${BASE_URL}/ticket/new`,
       formState
     )
 

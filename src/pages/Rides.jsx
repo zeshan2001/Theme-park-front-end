@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { BASE_URL } from '../globals'
 
-
 const Rides = () => {
   const [rides, setRides] = useState([])
 
@@ -18,14 +17,14 @@ const Rides = () => {
 
   return (
     <>
-      <h1 className='header-text'>List of Rides</h1>
-      <div className='rides'>
+      <h1 className="header-text">List of Rides</h1>
+      <div className="rides">
         {rides.length > 0 ? (
           rides.map((ride) => {
             return <Ride key={ride._id} ride={ride} />
           })
         ) : (
-          <h1>Loading...</h1>
+          <h1 className="header-text">Loading...</h1>
         )}
       </div>
     </>
